@@ -98,13 +98,12 @@ def update_user_me(new_data: UserUpdate,
     new_user_data["created_at"] = str(new_user_data["created_at"])
 
     user_service.block_access_token(token)
-
     response = {"msg": "Обновление прошло успешно. Пожалуйста, используйте новый токен доступа."}
-
     response.update({"user": new_user_data})
+    # refresh_token = create_refresh_token(user_uuid=new_user_data["uuid"])
+    # refresh_jti = user_service.get_jti(refresh_token)
 
-    refresh_token = create_refresh_token(user_uuid=new_user_data["uuid"])
-    refresh_jti = user_service.get_jti(refresh_token)
+    refresh_jti = user_service.get_refresh_jti_from_access_token(token)
 
     access_token = create_access_token(
         refresh_jti=refresh_jti,

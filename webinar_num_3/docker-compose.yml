@@ -24,7 +24,7 @@ services:
     expose:
       - 6379
     ports:
-      - "9000:6379"
+      - "9005:6379"
     networks:
       - ylab_network
     healthcheck:

@@ -63,7 +63,7 @@ def shutdown():
 
 # Подключаем роутеры к серверу
 app.include_router(router=posts.router, prefix="/api/v1/posts")
-app.include_router(router=users.router, prefix="/api/v1/users")
+app.include_router(router=users.router, prefix="/api/v1")
 
 
 if __name__ == "__main__":

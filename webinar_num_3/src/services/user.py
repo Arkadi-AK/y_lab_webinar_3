@@ -143,6 +143,11 @@ class UserService(ServiceMixin):
         jti = payload["jti"]
         return jti
 
+    @staticmethod
+    def get_refresh_jti_from_access_token(refresh_token: str) -> str:
+        payload = jwt.decode(refresh_token, JWT_SECRET_KEY, algorithms=[JWT_ALGORITHM])
+        return payload["refresh_jti"]
+
 
 @lru_cache()
 def get_user_service(
